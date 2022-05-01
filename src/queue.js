@@ -44,7 +44,7 @@ const { ListNode } = require('../extensions/list-node.js');
 
     const nodeQueue = new ListNode(value);
     
-    if(this.length === 0) {
+    if(!(this.length)) {
       this.head = nodeQueue;
     }
     if(this.length) {
@@ -63,7 +63,7 @@ const { ListNode } = require('../extensions/list-node.js');
   dequeue() {
     // throw new NotImplementedError('Not implemented');
 
-    if(this.length === 0) {
+    if(!(this.length)) {
       return 1;
     } else {
       let linkHeadTemp = this.head.next;

@@ -1,6 +1,6 @@
 const { NotImplementedError } = require('../extensions/index.js');
 
-// const { ListNode } = require('../extensions/list-node.js');
+const { ListNode } = require('../extensions/list-node.js');
 
 /**
  * Given a singly linked list of integers l and an integer k,
@@ -22,9 +22,80 @@ const { NotImplementedError } = require('../extensions/index.js');
  *   }
  * }
  */
-function removeKFromList(/* l, k */) {
-  throw new NotImplementedError('Not implemented');
-  // remove line with error and write your code here
+function removeKFromList(l, k) {
+  // throw new NotImplementedError('Not implemented');
+
+  const kInner = k;
+
+
+  function getArray(listLinked) {
+    let nodeArr = [];
+    let cur = listLinked;
+    while (cur.next) {
+      nodeArr.push(cur.value);
+      cur = cur.next
+    }
+    nodeArr.push(cur.value);
+    return nodeArr;
+  }
+  const arrInner = getArray(l);
+
+
+  // delete all - k elements
+  function delElement(array, k) {
+    const arrIn = [...array];
+    return arrIn.filter((el) => {
+      return el !== k;
+    });
+  }
+
+  let arrTemp = delElement(arrInner, kInner);
+
+  function toList(arr) {
+    let head = null;
+    let length = 0;
+
+    function addQueue(value) {
+      const node = new ListNode(value);
+      if (!(length)) {
+        head = node;
+      }
+      if (length) {
+        let cur = head;
+        while (cur.next) {
+          cur = cur.next;
+        }
+        cur.next = node;
+      }
+      length++;
+      return node;
+    }
+
+    function listResult(arrResult) {
+      arrResult.forEach((el) => addQueue(el));
+      return 1;
+    }
+
+    function getList() {
+      let nodeLastValue = 0;
+      if (!(length)) {
+        return 1;
+      } else {
+        function recursive(link) {
+          let linkCurrentInner = link;
+          if (linkCurrentInner.next) {
+            recursive(linkCurrentInner.next);
+          }
+          return linkCurrentInner;
+        }
+        nodeLastValue = recursive(head);
+        return nodeLastValue;
+      }
+    }
+    listResult(arr);
+    return getList();
+  }
+  return toList(arrTemp);
 }
 
 module.exports = {
