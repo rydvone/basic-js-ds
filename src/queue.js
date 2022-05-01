@@ -19,7 +19,7 @@ const { ListNode } = require('../extensions/list-node.js');
     this.length = 0;
   }
   getUnderlyingList() {
-    throw new NotImplementedError('Not implemented');
+    // throw new NotImplementedError('Not implemented');
     let nodeLastValue = 0;
     if(!(this.length)) {
       return 1;
@@ -40,7 +40,7 @@ const { ListNode } = require('../extensions/list-node.js');
   }
 
   enqueue(value) {
-    throw new NotImplementedError('Not implemented');
+    // throw new NotImplementedError('Not implemented');
 
     const nodeQueue = new ListNode(value);
     
@@ -61,7 +61,7 @@ const { ListNode } = require('../extensions/list-node.js');
   }
 
   dequeue() {
-    throw new NotImplementedError('Not implemented');
+    // throw new NotImplementedError('Not implemented');
 
     if(!(this.length)) {
       return 1;
