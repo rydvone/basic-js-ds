@@ -65,9 +65,9 @@ class BinarySearchTree {
   find(data) {
     // throw new NotImplementedError('Not implemented');
 
-    return hasFind(this.head, data);
+    return findInner(this.head, data);
 
-    function hasFind(node, value) {
+    function findInner(node, value) {
       if(!(node)) {
         return null;
       }
@@ -76,9 +76,9 @@ class BinarySearchTree {
       }
 
       if(node.data > value) {
-        return hasFind(node.left, value);
+        return findInner(node.left, value);
       } else {
-        return hasFind(node.right, value);
+        return findInner(node.right, value);
       }
     }
   }
