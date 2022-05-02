@@ -24,14 +24,14 @@ class BinarySearchTree {
 
     function addInner(node, value) {
       if(!(node)) {
-        return new Node(data);
+        return new Node(value);
       }
 
-      if(node.value = value) {
+      if(node.data === value) {
         return node;
       }
 
-      if(node.value > value) {
+      if(node.data > value) {
         node.left = addInner(node.left, value);
       } else {
         node.right = addInner(node.right, value);
@@ -50,14 +50,13 @@ class BinarySearchTree {
       if(!(node)) {
         return false;
       }
-      if(node.value === value) {
+      if(node.data === value) {
         return true;
       }
 
-      if(node.value > value) {
+      if(node.data > value) {
         return hasInner(node.left, value);
-      }
-      if(node.right < value) {
+      } else {
         return hasInner(node.right, value);
       }
     }
@@ -78,10 +77,10 @@ class BinarySearchTree {
         return false;
       }
       
-      if(node.value > value) {
+      if(node.data > value) {
         node.left = removeInner(node.left, value);
         return node;
-      } else if (node.value < value) {
+      } else if (node.data < value) {
         node.right = removeInner(node.right, value);
         return node;
       } else {
@@ -102,9 +101,9 @@ class BinarySearchTree {
         while(minRight.left) {
           minRight = minRight.left;
         }
-        node.value = minRight.value;
+        node.data = minRight.data;
 
-        node.right = removeInner(node.right, minRight.value);
+        node.right = removeInner(node.right, minRight.data);
 
         return node;
       }
@@ -122,7 +121,7 @@ class BinarySearchTree {
       while(node.left) {
         node = node.left;
       }
-      let minNode = node.value;
+      let minNode = node.data;
       return minNode;
     }
   }
@@ -132,17 +131,13 @@ class BinarySearchTree {
     if(!(this.head)) {
       return null;
     }
-    if(this.head) {
       let node = this.head;
-      console.log('node max 1 ', node.value);
       while(node.right) {
         node = node.right;
       }
-      let maxNode = node.value;
-      console.log('node max 1 ', node.value);
+      let maxNode = node.data;
+      console.log('node max 1 ', node.data);
       return maxNode;
-    }
-
   }
 }
 
