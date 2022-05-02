@@ -19,12 +19,12 @@ class BinarySearchTree {
 
   add(data) {
     // throw new NotImplementedError('Not implemented');
+    const nodeNew = new Node(data);
     this.head = addInner(this.head, data);
-    // const nodeNew = new Node(data);
 
     function addInner(node, value) {
       if(!(node)) {
-        return new Node(value);
+        return nodeNew;
       }
 
       if(node.data === value) {
@@ -64,12 +64,28 @@ class BinarySearchTree {
 
   find(data) {
     // throw new NotImplementedError('Not implemented');
-    
 
+    return hasFind(this.head, data);
+
+    function hasFind(node, value) {
+      if(!(node)) {
+        return null;
+      }
+      if(node.data === value) {
+        return node;
+      }
+
+      if(node.data > value) {
+        return hasFind(node.left, value);
+      } else {
+        return hasFind(node.right, value);
+      }
+    }
   }
 
   remove(data) {
     // throw new NotImplementedError('Not implemented');
+
     this.head = removeInner(this.head, data);
 
     function removeInner(node, value) {
@@ -136,7 +152,6 @@ class BinarySearchTree {
         node = node.right;
       }
       let maxNode = node.data;
-      console.log('node max 1 ', node.data);
       return maxNode;
   }
 }
